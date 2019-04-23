@@ -27,24 +27,6 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
         }
         return self::$users;
     }
-    public static function echUsers() {
-        foreach (self::$users as $user) {
-            echo   $user['id'].' ';
-            echo   $user['username'].' ';
-            echo   $user['password'].' ';
-            echo   $user['authKey'].' ';
-            echo   $user['accessToken'].'<br>';
-
-        };
-    }
-    public static function userUsers() {
-        $st = Users::find()->all();
-        foreach ($st as $item) {
-            echo $item['name'].' ';
-            echo $item['pass'].' ';
-        }
-    }
-
 
     /**
      * {@inheritdoc}
