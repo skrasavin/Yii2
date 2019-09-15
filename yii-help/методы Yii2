@@ -1,0 +1,56 @@
+DB - 
+	->createCommand('SELECT * FROM activities')
+	->queryAll()
+	->queryOne() - вернет первую строку в выборке вне зависимости от запроса
+	->queryColumn()
+	->queryScalar() - значение ячейки
+	->bindValues()
+	->insert('activity', ['user_id'=>5, 'day_start'=>date()])->execute()
+	->batchInsert('activity', ['user_id', 'date_start'], [['5'=>date()], ['6'=>date()]]->execute()
+		$params = [':activityId' => $_GET['id']]
+	->createComman('SELECT * FROM post WHERE id=:id AND status=:status', $params)
+	
+QUERY and QUERYBUILDER
+	select
+	from
+	all
+	orderBy('id desc') - сортировка
+	
+	insert
+	update
+МИГРАЦИИ
+	php yii migrate/new
+	php yii migrate/create create_activities_table
+	dropColumn, dropTable, createTable 
+		
+	
+TRANSACTION
+	$db = Yii::$app->db;
+	$myTransaction = $db->beginTransaction();
+	try {
+		$db->createCommand($sql1)->execute();
+		$db->createCommand($sql2)->execute();
+		$myTransaction->commit();
+	}
+	catch(\Throwable $e) {
+		$myTransaction->rollBack();
+	}
+	
+DAO
+	public function getUserActivityData(){
+		$id = $user->getId();
+		$dao = new ActivityDao();
+		$return $dao->getDataByUserId($id);
+	}
+	public function getDataByUserId(int $userId) {
+		return Yii::$app->db->createCommand()->...
+	}
+
+UploadedFile::getInstances
+VarDumper::export
+textInput(['autocomplete'=>off]),
+textInput(['type'=>'date']
+textarea['rows'=>5]
+checkbox()
+fileInput(['multiple' => true ])
+attributes - передать аттрибуты модели
