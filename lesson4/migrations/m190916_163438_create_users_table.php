@@ -18,6 +18,15 @@ class m190916_163438_create_users_table extends Migration
             'password' => $this->string()->notNull(),
 
         ]);
+
+        $this->addForeignKey(
+            'fk-users-id',
+            'users',
+            'id',
+            'activity',
+            'user_id',
+            'CASCADE'
+        );
     }
 
     /**

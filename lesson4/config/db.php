@@ -2,7 +2,7 @@
 
 return [
     'class' => yii\db\Connection::class,
-    'dsn' => 'mysql:host=192.168.1.106;dbname=admin_yii2',
+    'dsn' => 'mysql:host=192.168.1.70;dbname=admin_yii2',
     'username' => 'admin_serg',
     'password' => '111111',
     'charset' => 'utf8',
