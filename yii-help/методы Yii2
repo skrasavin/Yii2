@@ -2,14 +2,18 @@ DB -
 	->createCommand('SELECT * FROM activities')
 	->queryAll()
 	->queryOne() - вернет первую строку в выборке вне зависимости от запроса
-	->queryColumn()
-	->queryScalar() - значение ячейки
-	->bindValues()
-	->insert('activity', ['user_id'=>5, 'day_start'=>date()])->execute()
+	->queryColumn() - вернет первый столбец
+	->queryScalar() - вернет значение ячейки
+	->bindValue() - биндинг одного параметра
+	->bindValues() - биндинг нескольких параметров
+	->bindParams() - биндинг по ссылке
 	->batchInsert('activity', ['user_id', 'date_start'], [['5'=>date()], ['6'=>date()]]->execute()
 		$params = [':activityId' => $_GET['id']]
-	->createComman('SELECT * FROM post WHERE id=:id AND status=:status', $params)
-	
+	->createCommand->insert('activity', ['user_id'=>5, 'day_start'=>date()])->execute()
+	->createCommand('SELECT * FROM post WHERE id=:id AND status=:status', $params)
+	->createCommand(UPDATE activities SET user_id=5 WHERE id=1)->execute()
+
+
 QUERY and QUERYBUILDER
 	select
 	from
@@ -20,9 +24,20 @@ QUERY and QUERYBUILDER
 	update
 МИГРАЦИИ
 	php yii migrate/new
-	php yii migrate/create create_activities_table
-	dropColumn, dropTable, createTable 
-		
+	php yii migrate/create create_activities_table 
+
+        методы миграций
+	createTable(), renameTable(),
+	dropTable(), dropTable()
+	truncateTable() - очистка таблицы
+	addColumn(), renameColumn(), 	alterColumn() - изменение свойств столбца
+	addPrimaryKey(), addForeignKey(), dropForeignKey()
+	createIndex(), dropIndex()
+	
+	$this->addForeignKey('ИМЯ КЛЮЧА', 'ИМЯ ТАБЛИЦЫ', 'ПОЛЯ', 
+	'ВНЕШНЯЯ ТАБЛИЦА', 'СООТВЕТСТВУЮЩИЕ ВНЕШНИЕ ПОЛЯ', 'ФЛАГ КАСКАДНОГО УДАЛЕНИЯ');
+
+	$this->createIndex('activity_user_index', 'activity', 'id_user');
 	
 TRANSACTION
 	$db = Yii::$app->db;
