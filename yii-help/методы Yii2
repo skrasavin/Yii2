@@ -13,9 +13,43 @@ DB -
 	->createCommand('SELECT * FROM post WHERE id=:id AND status=:status', $params)
 	->createCommand(UPDATE activities SET user_id=5 WHERE id=1)->execute()
 
-
+ACTIVE_RECORD
+	$userActivities = Activity::find()->where(['id_user'=>123])->all()
+	$someActivity = Activity::find($id) 
+	public function tableName() {  return 'users'}
+	
+	isGuest()
+	self::find()
+	::findOne(['id'=>$id])
+	->one()
+	$this->hasMany(Activity::className(), ['id_user'=> 'id']) // для пользователя USER
+	$this->hasOne(User::className(), ['id'=> 'id_user']) // для событий ACTIVITY
+	save()
+	delete()
+	refresh()
+	afterFind()
+	beforeValidate(),afterValidate()
+	beforeSave(), afterSave()
+	beforeDelete(), afterDelete()
+	
+USER
+	Yii:$app->user
+	->isQuest()
+	->id
+	->identity
+	->login()
+	->logout()
+		
+	->user->can('createActivity)
+	
+	$role = Yii:$app->authManager->getRole('role_name')
+	$permit = Yii:$app->authManager->getPermission('permission_name')
+	->authManager->addChild($role, $permit)
+	
+	php yii app/init
+	
 QUERY and QUERYBUILDER
-	select
+	select('*')
 	from
 	all
 	orderBy('id desc') - сортировка
@@ -25,7 +59,7 @@ QUERY and QUERYBUILDER
 МИГРАЦИИ
 	php yii migrate/new
 	php yii migrate/create create_activities_table 
-
+	php yii migrate/fresh
         методы миграций
 	createTable(), renameTable(),
 	dropTable(), dropTable()
@@ -69,3 +103,5 @@ textarea['rows'=>5]
 checkbox()
 fileInput(['multiple' => true ])
 attributes - передать аттрибуты модели
+Yii::$app->security()->generateRandomString()
+Yii::$app->security()->generatyPasswordHash()
