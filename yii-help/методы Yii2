@@ -13,6 +13,16 @@ DB -
 	->createCommand('SELECT * FROM post WHERE id=:id AND status=:status', $params)
 	->createCommand(UPDATE activities SET user_id=5 WHERE id=1)->execute()
 
+RBAC
+	php yii migrate --migrationPath=@yii/rbac/migrations
+	php yii rbac/init
+	\Yii::$app->user->can('createActivity')
+	
+	$role = Yii::$app->authManager->getRole($name);
+	$permit = Yii::$app->authManager->getPermission($permit);
+	Yii::$app->authManager->addChild($role, $permit);
+
+
 ACTIVE_RECORD
 	$userActivities = Activity::find()->where(['id_user'=>123])->all()
 	$someActivity = Activity::find($id) 
@@ -21,7 +31,7 @@ ACTIVE_RECORD
 	isGuest()
 	self::find()
 	::findOne(['id'=>$id])
-	->one()
+	->one() - ->all()
 	$this->hasMany(Activity::className(), ['id_user'=> 'id']) // для пользователя USER
 	$this->hasOne(User::className(), ['id'=> 'id_user']) // для событий ACTIVITY
 	save()
@@ -60,6 +70,7 @@ QUERY and QUERYBUILDER
 	php yii migrate/new
 	php yii migrate/create create_activities_table 
 	php yii migrate/fresh
+	
         методы миграций
 	createTable(), renameTable(),
 	dropTable(), dropTable()
@@ -72,6 +83,7 @@ QUERY and QUERYBUILDER
 	'ВНЕШНЯЯ ТАБЛИЦА', 'СООТВЕТСТВУЮЩИЕ ВНЕШНИЕ ПОЛЯ', 'ФЛАГ КАСКАДНОГО УДАЛЕНИЯ');
 
 	$this->createIndex('activity_user_index', 'activity', 'id_user');
+
 	
 TRANSACTION
 	$db = Yii::$app->db;
