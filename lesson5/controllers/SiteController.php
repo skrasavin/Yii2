@@ -41,11 +41,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function actionRegisterForm()
-    {
-        $model = new RegisterForm();
-        return $this->render('register-form', compact('model'));
-    }
+
     public function actions()
     {
         return [

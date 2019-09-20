@@ -14,7 +14,7 @@ use app\models\User;
 
 class ActivityController extends Controller
 {
-
+/*
     public function behaviors()
     {
         return [
@@ -23,7 +23,7 @@ class ActivityController extends Controller
                 'only' => ['index', 'view', 'create'],
                 'rules' => [
                     [
-                        'allow' => true,
+                        'allow' => false,
                         'roles' => ['admin'],
                     ],
                 ],

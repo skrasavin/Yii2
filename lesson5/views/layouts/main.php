@@ -59,7 +59,7 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
             ),
-            ['label' => 'Регистрация', 'url' => ['/site/register-form']],
+            ['label' => 'Регистрация', 'url' => ['/user/register-form']],
         ],
     ]);
 

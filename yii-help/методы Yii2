@@ -13,6 +13,16 @@ DB -
 	->createCommand('SELECT * FROM post WHERE id=:id AND status=:status', $params)
 	->createCommand(UPDATE activities SET user_id=5 WHERE id=1)->execute()
 
+FORM 
+	->field
+	->hint
+	->textInput(['autocomplete'=>off]),
+	->->fileInput(['multiple' => true ])
+	->textInput(['type'=>'date']
+	->textarea['rows'=>5]
+	->checkbox()
+	
+
 RBAC
 	php yii migrate --migrationPath=@yii/rbac/migrations
 	php yii rbac/init
@@ -109,11 +119,7 @@ DAO
 
 UploadedFile::getInstances
 VarDumper::export
-textInput(['autocomplete'=>off]),
-textInput(['type'=>'date']
-textarea['rows'=>5]
-checkbox()
-fileInput(['multiple' => true ])
+
 attributes - передать аттрибуты модели
 Yii::$app->security()->generateRandomString()
 Yii::$app->security()->generatyPasswordHash()

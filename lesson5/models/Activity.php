@@ -8,6 +8,8 @@
 namespace app\models;
 
 use yii\db\ActiveRecord;
+use yii\i18n\Formatter;
+
 
 /**
  * Модель - Событие
@@ -29,20 +31,30 @@ class Activity extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'date_start', 'date_end', 'user_id', 'description'], 'required'],
+            [['title', 'user_id', 'description'], 'required'],
 
             [['title', 'description'], 'string'],
             [['title'], 'string', 'min' => 2, 'max' => 160],
 
-            [['date_start', 'date_end'], 'date', 'format' => 'php:Y-m-d'],
+            [['date_start', 'date_end'], 'date'],
 
             [['user_id'], 'integer'],
 
             [['repeat', 'blocked'], 'boolean'],
 
+            [['date_start'], 'validateStartDate'],
+
             //[['attachments'], 'file', 'maxFiles' => 5],
         ];
     }
+
+    public function validateStartDate(){
+            if($this->date_start = 0) {
+                return $this->date_start = 'hello';
+            } {
+        }
+    }
+
 
     /**
      * Названия полей модели
