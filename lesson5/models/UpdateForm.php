@@ -1,14 +1,8 @@
 <?php
-/**
- * Created by Artyom Manchenkov
- * artyom@manchenkoff.me
- * manchenkoff.me © 2019
- */
 
 namespace app\models;
 
 use yii\db\ActiveRecord;
-use yii\i18n\Formatter;
 
 
 /**
@@ -17,8 +11,9 @@ use yii\i18n\Formatter;
  *
  * @property-read User $user
  */
-class Activity extends ActiveRecord
+class UpdateForm extends ActiveRecord
 {
+    public $event_id;
     public static function tableName()
     {
         return 'activities';
@@ -50,10 +45,10 @@ class Activity extends ActiveRecord
         ];
     }
 
-     public function validateStartDate(){
-            if($this->date_start = 'null') {
-                return $this->date_start = date('Y-m-d');
-            } {
+    public function validateStartDate(){
+        if($this->date_start = 'null') {
+            return $this->date_start = date('Y-m-d');
+        } {
         }
     }
     public function validateEndDate(){
@@ -71,6 +66,7 @@ class Activity extends ActiveRecord
     public function attributeLabels()
     {
         return [
+            'event_id' => 'Id редактируемого события',
             'title' => 'Название',
             'date_start' => 'Дата начала',
             'date_end' => 'Дата окончания',

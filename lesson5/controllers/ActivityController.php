@@ -101,6 +101,14 @@ class ActivityController extends Controller
             'create',
             compact('model')
         );
+    }public function actionUpdate()
+    {
+        $model = new Activity();
+
+        return $this->render(
+            'update',
+            compact('model')
+        );
     }
 
     /**

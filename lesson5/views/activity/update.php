@@ -1,16 +1,22 @@
 <?php
 
+/**
+ * @var $this yii\web\View
+ * @var $model \app\models\Activity
+ */
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/**
- *
- * @var $this yii\web\View
- * @var $model app\models\Activity
- * @var $form ActiveForm
- */
-
 ?>
+    <div class="row">
+        <h1>Редактировать событие</h1>
+
+        <div class="form-group pull-right">
+            <?= Html::a('Назад', ['activity/index'], ['class' => 'btn btn-info']) ?>
+        </div>
+    </div>
+
 <div class="activity-form">
     <?php $form = ActiveForm::begin(['action' => ['/activity/submit']]); ?>
 
