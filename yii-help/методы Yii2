@@ -1,3 +1,37 @@
+WIDGET
+	DetailView::widget
+		'model' = $model
+		'attributes'= ['id'=>'', 'name'=>'']
+		'label'
+		'value' - изменить значение
+		'attribute' - выбрать аттрибут
+		'repeat:boolean'
+		:date, :time, :datetime
+		'format'
+		'pager'=> ['validatePage'=>false]
+	GridView::widget([
+		'dataProvider' => $provider	
+		'colums' = 
+		'options' - работа с css
+		'class' => 'yii\grid\SerialColumn::class'
+		'class' => 'ActionColums::class'
+		'header' => 'Псевдо-порядковый номер'
+				
+ПОВЕДЕНИЯ
+	- Timestamp Behavior
+	- Blameable Behavior
+	- Sluggable Behavior
+	- Attribute Behavior
+	- Attribute Typecast Behavior
+	- Cacheable Behavior				
+DATA PROVIDER
+	ActiveDataProvider - запросы к БД через JQUERY и ActiveQuery c массивом или AR объектом
+		'query'
+		'pagination'
+		'sort'
+	SqlDataProvider - запросы к БД через SQL с результирующим массивом
+	ArrayDataProvider - обработка большого массива с пагинацией и сортировкой
+	
 DB - 
 	->createCommand('SELECT * FROM activities')
 	->queryAll()
