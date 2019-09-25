@@ -1,3 +1,17 @@
+CONSOLE(CLI) - php yii
+	Asset - управление Ассетами
+	Cache - управление кеш хранилищами
+	Fixture - данные для тестов
+	Help - мини-справочник (по комментариям)
+	Message - помощник переводов
+	Migrate - управление миграциями БД
+	Serve - встроенный мини веб-сервер
+	
+	pubf options($acID) {return ['message', 'user']}
+	php yii some-command --message=hello --user=GeekBrains
+
+	php yii controller/action --option1=value -a=2 arg1 arg2
+
 WIDGET
 	DetailView::widget
 		'model' = $model
@@ -107,7 +121,7 @@ QUERY and QUERYBUILDER
 	from
 	all
 	orderBy('id desc') - сортировка
-	
+	andWhere()	
 	insert
 	update
 МИГРАЦИИ
@@ -153,7 +167,7 @@ DAO
 
 UploadedFile::getInstances
 VarDumper::export
-
+strtotime() - преобразование в timestamp
 attributes - передать аттрибуты модели
 Yii::$app->security()->generateRandomString()
 Yii::$app->security()->generatyPasswordHash()
