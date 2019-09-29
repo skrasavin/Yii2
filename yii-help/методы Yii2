@@ -8,9 +8,25 @@ CONSOLE(CLI) - php yii
 	Serve - встроенный мини веб-сервер
 	
 	pubf options($acID) {return ['message', 'user']}
+	pubf optionAliases() {return ['v' => 'name']}
 	php yii some-command --message=hello --user=GeekBrains
 
 	php yii controller/action --option1=value -a=2 arg1 arg2
+
+
+КЕШИРОВАНИЕ
+	Yii::$app->cache->get()
+	Yii::$app->cache->exists()
+
+АЛИАСЫ
+	public function aliases() { return ['m'=>'message', 'u'=> 'user'] }
+
+ПЛАНИРОВАНИЕ ЗАДАЧ
+	CRON GENERATOR && 	Supervisor
+
+	/etc/cron.d/activity-notification
+	MAILTO=''
+	1 0 * * * nginx cf 	/data/mysite.local/app && /usr/bin/php yii activity-notify/sendout
 
 WIDGET
 	DetailView::widget
