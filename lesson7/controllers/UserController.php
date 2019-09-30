@@ -54,10 +54,19 @@ class UserController extends Controller
         return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);
-    }public function actionSend()
+    }
+
+    public function actionSend()
     {
-        $id = var_dump(Yii::$app->request->get());
-        return $id[0];
+       Yii::$app->mailer->compose()
+            ->setFrom('hello.moscow@yandex.ru')
+            ->setTo('s-slam@mail.ru')
+            ->setSubject('New Activity')
+            ->setTextBody('Hello user, we create for your new Activity')
+            ->setHtmlBody('<b>текст сообщения в формате HTML</b>')
+            ->send();
+
+        return $this->redirect(['user/index']);
     }
 
     /**
