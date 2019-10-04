@@ -7,6 +7,7 @@
 
 namespace app\models;
 
+use app\components\CachedRecordBehavior;
 use Yii;
 use yii\base\Exception;
 use yii\behaviors\TimestampBehavior;
@@ -37,12 +38,17 @@ class User extends ActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
+
             TimestampBehavior::class,
 
             //[
             //    'class' => TimestampBehavior::class,
             //    'updatedAtAttribute' => 'last_change_at',
             //],
+            [
+                'class' => CachedRecordBehavior::class,
+                'prefix' => 'user',
+            ],
         ];
     }
 

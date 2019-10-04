@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Activity;
 use app\models\forms\LoginForm;
 use app\models\forms\SignupForm;
 use Yii;
@@ -49,6 +50,11 @@ class SiteController extends Controller
      *
      * @return string
      */
+    public function actionCalendar()
+    {
+        $item = new Activity();
+        return $this->render('calendar', ['calendar'=>$item]);
+    }
     public function actionIndex()
     {
         return $this->render('index');

@@ -52,6 +52,8 @@ class Activity extends ActiveRecord
                 'class' => CachedRecordBehavior::class,
                 'prefix' => 'activity',
             ],
+
+
         ];
     }
 

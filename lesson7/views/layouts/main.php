@@ -51,6 +51,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
+            ['label' => 'Календарь', 'url' => ['/site/calendar']],
             ['label' => 'События', 'url' => ['/activity/index']],
             Yii::$app->user->can('admin')
                 ? ['label' => 'Пользователи', 'url' => ['/user/index']]

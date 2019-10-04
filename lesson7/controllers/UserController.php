@@ -78,6 +78,18 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
+        // ключ для записи в кеш
+        $cacheKey = "user_{$id}"; // activity_1
+
+        // проверка на наличие в кеше
+        if (Yii::$app->cache->exists($cacheKey)) {
+            $item = Yii::$app->cache->get($cacheKey);
+        } else {
+            // получение из бд с сохранением в кеш
+            $item = User::findOne($id);
+
+            Yii::$app->cache->set($cacheKey, $item);
+        }
 
         return $this->render('view', [
             'model' => $this->findModel($id),
