@@ -18,6 +18,10 @@ $months = [
         'November' => 11,
         'December' => 12,
 ];
+
+$days = [3,7, 15];
+$daysZwei = [4,5,8,9,16,17];
+
 ?>
 
 <table class="calendar-table"><a href="">
@@ -36,20 +40,21 @@ $months = [
     <?php echo Html::tag('td', 'Saturday', ['class'=>'calendar-td'])?>
     <?php echo Html::tag('td', 'Sunday', ['class'=>'calendar-td']) ?>
     </tr>
-    <a href="#">
     <?php for($a = 0, $day = 1; $a < 6; $a++) {
         echo Html::tag('tr', '',['class'=>'calendar-tr']);
         if($a > 0) {
-            for ($b = 0; $b < 7 & $day < 31; $b++, $day++)
-                echo Html::tag('td', $day, ['class'=>'calendar-td', 'id'=>$day]);
+            for ($b = 0; $b < 7 & $day < 31; $b++, $day++) {
+                if(in_array($day, $days)):
+                    echo Html::a('sturmer.ru');
+                    echo Html::tag('td', $day, ['class'=>'red', 'id'=>$day]);
+                elseif(in_array($day, $daysZwei)):
+                    echo Html::tag('td', $day, ['class'=>'green', 'id'=>$day]);
+                else:
+                    echo Html::tag('td', $day, ['class'=>'calendar-td', 'id'=>$day]);
+                endif;
+            }
         }
-        echo Html::tag('tr');
     }; ?>
-    </a>
 </table>
 
-
-<script>
-    document.getElementById('3').classList.add('red');
-</script>
 
